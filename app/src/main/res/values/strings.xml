@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RentalCar</string>
+    <string name="enter_email">Enter email:</string>
+    <string name="enter_name">Enter name</string>
+    <string name="cars">Cars</string>
+    <string name="current">Current</string>
+    <string name="completed">Completed</string>
+    <string name="penalties">Penalties</string>
+</resources>
