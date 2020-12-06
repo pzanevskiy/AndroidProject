@@ -16,9 +16,9 @@ import java.util.List;
 @Dao
 public interface OrderDao {
 
-    @Transaction
+
     @Query("SELECT * FROM orders WHERE status=:status AND user_id=:id")
-    LiveData<List<UserWithOrders>> getUserWithOrders(String status, int id);
+    LiveData<List<Order>> getUserWithOrders(String status, int id);
 
     @Insert
     void addOrder(Order order);

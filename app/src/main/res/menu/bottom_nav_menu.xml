@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/menu_home"
         android:enabled="true"
-        android:icon="@android:drawable/arrow_down_float"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/menu_cars"
+        android:enabled="true"
+        android:icon="@drawable/ic_car"
         android:title="@string/cars" />
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/menu_current"
         android:enabled="true"
-        android:icon="@android:drawable/ic_media_play"
+        android:icon="@drawable/ic_current"
         android:title="@string/current" />
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/menu_completed"
         android:enabled="true"
-        android:icon="@android:drawable/checkbox_on_background"
+        android:icon="@drawable/ic_completed"
         android:title="@string/completed" />
     <item
-        android:id="@+id/page_4"
+        android:id="@+id/menu_penalty"
         android:enabled="true"
-        android:icon="@android:drawable/presence_busy"
+        android:icon="@drawable/ic_penalty"
         android:title="@string/penalties" />
 </menu>

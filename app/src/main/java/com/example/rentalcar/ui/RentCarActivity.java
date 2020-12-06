@@ -32,7 +32,7 @@ public class RentCarActivity extends AppCompatActivity {
         args=getIntent().getExtras();
         if(args!=null){
             car=(Car)args.getSerializable("car");
-            userId=Integer.parseInt(String.valueOf(args.getInt("userId")));
+            userId=Integer.parseInt(args.getString("userId"));
             TextView brand=(TextView)findViewById(R.id.carBrandRent);
             TextView model=(TextView)findViewById(R.id.carModelRent);
             TextView price=(TextView)findViewById(R.id.carPriceRent);
@@ -45,7 +45,8 @@ public class RentCarActivity extends AppCompatActivity {
     public void buttonRentClick(View view) {
         EditText duration=(EditText)findViewById(R.id.durRent);
         Order order=new Order();
-        order.setCarId(car.getId());
+        order.setCar(car);
+        //order.setCarId(car.getId());
         order.setUserId(userId);
         order.setDuration(Integer.parseInt(duration.getText().toString()));
         order.setPrice(order.getDuration()*car.getPrice());
@@ -54,7 +55,7 @@ public class RentCarActivity extends AppCompatActivity {
         order.setStartDate(DateService.getParsedDate(localDateTime));
         order.setEndDate(DateService.getParsedDate(DateService.getAfterDurationDateTime(localDateTime,order.getDuration())));
         orderViewModel.addOrder(order);
-        Intent intent=new Intent(RentCarActivity.this,CarsActivity.class);
+        Intent intent=new Intent(RentCarActivity.this,NavBarActivity.class);
         intent.putExtra("user",userId);
         startActivity(intent);
     }

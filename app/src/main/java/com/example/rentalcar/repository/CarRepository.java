@@ -20,6 +20,10 @@ public class CarRepository {
         carDao=rentalDatabase.carDao();
     }
 
+    public List<Car> getList(){
+        return carDao.getAllCars();
+    }
+
     public LiveData<List<Car>> getCars(){
         return carDao.getAll();
     }

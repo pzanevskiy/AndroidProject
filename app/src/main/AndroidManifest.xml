@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RentalCar">
-        <activity android:name=".ui.RentCarActivity"></activity>
+        <activity android:name=".ui.CurrentOrderActivity"></activity>
+        <activity android:name=".ui.NavBarActivity" />
+        <activity android:name=".ui.RentCarActivity" />
         <activity android:name=".ui.CarsActivity" />
         <activity android:name=".ui.NewUserActivity" />
         <activity android:name=".ui.MainActivity">

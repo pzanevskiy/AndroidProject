@@ -18,18 +18,22 @@ public class OrderViewModel extends AndroidViewModel {
 
     public OrderViewModel(@NonNull Application application) {
         super(application);
-        orderRepository=new OrderRepository(application);
+        orderRepository = new OrderRepository(application);
     }
 
-    public LiveData<List<UserWithOrders>> getOrders(String status,int id){
+    public LiveData<List<Order>> getOrders(String status, int id) {
         return orderRepository.getUserWithOrders(status, id);
     }
 
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
         orderRepository.addOrder(order);
     }
 
-    public void deleteOrder(Order order){
+    public void deleteOrder(Order order) {
         orderRepository.deleteOrder(order);
+    }
+
+    public void updateOrder(Order order) {
+        orderRepository.updOrder(order);
     }
 }

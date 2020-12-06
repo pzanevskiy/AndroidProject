@@ -22,7 +22,7 @@ public class OrderRepository {
         orderDao=rentalDatabase.orderDao();
     }
 
-    public LiveData<List<UserWithOrders>> getUserWithOrders(String status, int userId){
+    public LiveData<List<Order>> getUserWithOrders(String status, int userId){
         return orderDao.getUserWithOrders(status, userId);
     }
 
@@ -35,6 +35,12 @@ public class OrderRepository {
     public void deleteOrder(Order order){
         RentalDatabase.databaseWriteExecutor.execute(()->{
             orderDao.deleteOrder(order);
+        });
+    }
+
+    public void updOrder(Order order){
+        RentalDatabase.databaseWriteExecutor.execute(()->{
+            orderDao.updateOrder(order);
         });
     }
 }

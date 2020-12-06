@@ -1,32 +1,30 @@
 package com.example.rentalcar.db.entity;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "orders",
-        foreignKeys = {
+        foreignKeys =
         @ForeignKey(
                 entity = User.class,
                 parentColumns = "id",
                 childColumns = "user_id",
-                onDelete = ForeignKey.CASCADE),
-        @ForeignKey(
-                entity = Car.class,
-                parentColumns = "id",
-                childColumns = "car_id",
                 onDelete = ForeignKey.CASCADE)
-})
-public class Order {
+        )
+public class Order implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "user_id")
     private int userId;
 
-    @ColumnInfo(name = "car_id")
-    private int carId;
+    @Embedded(prefix = "car")
+    private Car car;
 
     private int duration;
 
@@ -56,12 +54,13 @@ public class Order {
         this.userId = userId;
     }
 
-    public int getCarId() {
-        return carId;
+
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public int getDuration() {

@@ -5,24 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rentalcar.R;
 import com.example.rentalcar.db.entity.Order;
-import com.example.rentalcar.db.relations.UserWithOrders;
-import com.example.rentalcar.viewmodel.OrderViewModel;
 
 import java.util.List;
 
-public class UserWithOrdersAdapter extends BaseAdapter {
+public class UserWithCompletedOrdersAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     List<Order> orders;
 
-    public UserWithOrdersAdapter(Context context, List<Order> orders){
+    public UserWithCompletedOrdersAdapter(Context context, List<Order> orders){
         ctx=context;
         this.orders = orders;
         lInflater=(LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,7 +42,7 @@ public class UserWithOrdersAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = lInflater.inflate(R.layout.order_item, parent, false);
+            view = lInflater.inflate(R.layout.fragment_compl_order, parent, false);
         }
 
         TextView carId=(TextView)view.findViewById(R.id.orderCarId);
@@ -57,6 +52,7 @@ public class UserWithOrdersAdapter extends BaseAdapter {
         TextView end=(TextView)view.findViewById(R.id.orderEnd);
 
         Order order= orders.get(position);
+
         carId.setText(String.valueOf(order.getCar().getId()));
         userId.setText(String.valueOf(order.getUserId()));
         duration.setText(String.valueOf(order.getDuration()));

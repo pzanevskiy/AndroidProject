@@ -14,5 +14,21 @@ public class UserWithOrders {
     public User user;
 
     @Relation(parentColumn = "id", entityColumn = "user_id")
-    public List<Order> orders = new ArrayList<>();
+    public Order orders;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Order getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Order orders) {
+        this.orders = orders;
+    }
 }

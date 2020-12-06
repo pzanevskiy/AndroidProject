@@ -20,6 +20,9 @@ public class CarViewModel extends AndroidViewModel {
         carRepository=new CarRepository(application);
     }
 
+    public List<Car> getList(){
+        return carRepository.getList();
+    }
     public LiveData<List<Car>> getCars(){
         return carRepository.getCars();
     }

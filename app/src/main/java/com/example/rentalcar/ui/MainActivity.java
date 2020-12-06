@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 
 import com.example.rentalcar.R;
+import com.example.rentalcar.db.entity.Car;
 import com.example.rentalcar.db.entity.User;
 import com.example.rentalcar.viewmodel.CarViewModel;
 import com.example.rentalcar.viewmodel.UserViewModel;
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         userViewModel= new ViewModelProvider(this).get(UserViewModel.class);
         carViewModel=new ViewModelProvider(this).get(CarViewModel.class);
+//        Car car=new Car();
+//        car.setBrand("BMW");
+//        car.setModel("i30");
+//        car.setPrice(99.9);
+//        for(int i=0;i<10;i++){
+//            carViewModel.addCar(car);
+//        }
     }
 
 
@@ -39,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("ex", "error");
         }
         System.out.println();
-        Intent intent=new Intent(MainActivity.this, CarsActivity.class);
+        Intent intent=new Intent(MainActivity.this, NavBarActivity.class);
         intent.putExtra("user",user.getId());
         startActivity(intent);
     }
