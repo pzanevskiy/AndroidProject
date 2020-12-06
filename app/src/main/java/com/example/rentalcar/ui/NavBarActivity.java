@@ -32,14 +32,14 @@ public class NavBarActivity extends AppCompatActivity {
         if (args != null) {
             userId = String.valueOf(args.getInt("user"));
         }
-        user=userViewModel.getUserById(Integer.parseInt(userId));
+//        user=userViewModel.getUserById(Integer.parseInt(userId));
 
 //        Bundle bundle = new Bundle();
 //        bundle.putString("userId", userId);
 //        HomeFragment homeFragment = new HomeFragment();
 //        homeFragment.setArguments(bundle);
 
-        openFragment(HomeFragment.newInstance(userId, user.getName(),user.getEmail(),String.valueOf(user.getMoney())));
+        openFragment(HomeFragment.newInstance(userId/*, user.getName(),user.getEmail(),String.valueOf(user.getMoney())*/));
 
 
     }
@@ -56,7 +56,7 @@ public class NavBarActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_home: {
-                    openFragment(HomeFragment.newInstance(userId, user.getName(),user.getEmail(),String.valueOf(user.getMoney())));
+                    openFragment(HomeFragment.newInstance(userId/*, user.getName(),user.getEmail(),String.valueOf(user.getMoney())*/));
                     return true;
                 }
                 case R.id.menu_cars: {

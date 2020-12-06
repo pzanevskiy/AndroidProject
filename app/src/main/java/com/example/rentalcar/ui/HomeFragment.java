@@ -3,6 +3,8 @@ package com.example.rentalcar.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.rentalcar.R;
+import com.example.rentalcar.db.entity.User;
+import com.example.rentalcar.viewmodel.UserViewModel;
 
 import java.util.Date;
 
@@ -38,22 +42,13 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2,String param3,String param4) {
+    public static HomeFragment newInstance(String param1/*, String param2,String param3,String param4*/) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        args.putString(ARG_PARAM3, param3);
-        args.putString(ARG_PARAM4, param4);
+//        args.putString(ARG_PARAM2, param2);
+//        args.putString(ARG_PARAM3, param3);
+//        args.putString(ARG_PARAM4, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,24 +58,30 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-            mParam3 = getArguments().getString(ARG_PARAM3);
-            mParam4 = getArguments().getString(ARG_PARAM4);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//            mParam3 = getArguments().getString(ARG_PARAM3);
+//            mParam4 = getArguments().getString(ARG_PARAM4);
         }
     }
-
+    UserViewModel userViewModel;
     @Override
     public void onStart() {
         super.onStart();
         View view=getView();
+        userViewModel=new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.getUserById(Integer.parseInt(mParam1)).observe(getViewLifecycleOwner(), new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                TextView textView=(TextView)view.findViewById(R.id.homeTextView);
+                TextView email=(TextView)view.findViewById(R.id.homeUserEmail);
+                TextView money=(TextView)view.findViewById(R.id.homeUserMoney);
+                int userId=Integer.parseInt(mParam1);
+                textView.setText(user.getName());
+                email.setText(user.getEmail());
+                money.setText(String.valueOf(user.getMoney()));
+            }
+        });
 
-        TextView textView=(TextView)view.findViewById(R.id.homeTextView);
-        TextView email=(TextView)view.findViewById(R.id.homeUserEmail);
-        TextView money=(TextView)view.findViewById(R.id.homeUserMoney);
-        int userId=Integer.parseInt(mParam1);
-        textView.setText(mParam2+" "+new Date().toString());
-        email.setText(mParam3);
-        money.setText(mParam4);
     }
 
     @Override

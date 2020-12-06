@@ -19,7 +19,7 @@ public interface UserDao {
     LiveData<List<User>> getAll();
 
     @Query("SELECT * FROM users WHERE id=:id")
-    User getUserById(int id);
+    LiveData<User> getUserById(int id);
 
     @Query("SELECT * FROM users WHERE email=:email")
     User getUserByEmail(String email);

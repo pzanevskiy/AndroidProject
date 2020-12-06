@@ -21,7 +21,7 @@ public class UserRepository {
         userDao=rentalDatabase.userDao();
     }
 
-    public User getUserById(int id){
+    public LiveData<User> getUserById(int id){
         return userDao.getUserById(id);
     }
     public User getUserByEmail(String email){
