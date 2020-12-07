@@ -71,10 +71,10 @@ public class NavBarActivity extends AppCompatActivity {
                     openFragment(CompletedOrderFragment.newInstance(userId));
                     return true;
                 }
-//                case R.id.menu_penalty:{
-//                    openFragment(Fragment.newInstance("",""));
-//                    return true;
-//                }
+                case R.id.menu_penalty:{
+                    openFragment(InvoiceFragment.newInstance(userId));
+                    return true;
+                }
             }
             return false;
         }

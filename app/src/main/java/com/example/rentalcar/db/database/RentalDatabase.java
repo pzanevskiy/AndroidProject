@@ -7,25 +7,28 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.rentalcar.db.dao.CarDao;
+import com.example.rentalcar.db.dao.InvoiceDao;
 import com.example.rentalcar.db.dao.OrderDao;
 import com.example.rentalcar.db.dao.UserDao;
 import com.example.rentalcar.db.entity.Car;
+import com.example.rentalcar.db.entity.Invoice;
 import com.example.rentalcar.db.entity.Order;
 import com.example.rentalcar.db.entity.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Car.class, Order.class}, version = 1)
+@Database(entities = {User.class, Car.class, Order.class, Invoice.class}, version = 1)
 public abstract class RentalDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "test.db";
-    private static final int NUMBER_OF_THREADS = 6;
+    private static final int NUMBER_OF_THREADS = 8;
 
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     public abstract UserDao userDao();
     public abstract CarDao carDao();
     public abstract OrderDao orderDao();
+    public abstract InvoiceDao invoiceDao();
 
     private static volatile RentalDatabase INSTANCE;
 
@@ -37,6 +40,7 @@ public abstract class RentalDatabase extends RoomDatabase {
                             RentalDatabase.class, DB_NAME).fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build();
+
                 }
             }
         }
