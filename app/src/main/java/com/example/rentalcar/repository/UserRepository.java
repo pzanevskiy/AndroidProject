@@ -20,6 +20,9 @@ public class UserRepository {
         rentalDatabase=RentalDatabase.getInstance(application);
         userDao=rentalDatabase.userDao();
     }
+    public User getUser(int id){
+        return userDao.getUser(id);
+    }
 
     public LiveData<User> getUserById(int id){
         return userDao.getUserById(id);
@@ -41,6 +44,11 @@ public class UserRepository {
     public void deleteUser(User user){
         RentalDatabase.databaseWriteExecutor.execute(()->{
             userDao.deleteUser(user);
+        });
+    }
+    public void updUser(User user){
+        RentalDatabase.databaseWriteExecutor.execute(()->{
+            userDao.updateUser(user);
         });
     }
 }

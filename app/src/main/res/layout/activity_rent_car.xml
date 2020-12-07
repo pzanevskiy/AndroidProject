@@ -7,96 +7,114 @@
     android:orientation="vertical"
     tools:context=".ui.RentCarActivity"   >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="237dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Brand"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/carBrandRent"
-            android:layout_width="244dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/model"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/duration"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/brand"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/durRent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:text="Model"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/carModelRent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Price"
-            android:textSize="24sp" />
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView31"
+            app:layout_constraintTop_toBottomOf="@+id/carPriceRent" />
 
         <TextView
             android:id="@+id/carPriceRent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView27"
+            app:layout_constraintTop_toBottomOf="@+id/carModelRent" />
 
         <TextView
-            android:id="@+id/textView31"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Duration"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/durRent"
+            android:id="@+id/textView27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:textSize="24sp" />
-    </LinearLayout>
+            android:text="@string/price"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
-    <Button
-        android:id="@+id/buttonRent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="buttonRentClick"
-        android:text="Button" />
+        <TextView
+            android:id="@+id/carBrandRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView25"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/carModelRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView26"
+            app:layout_constraintTop_toBottomOf="@+id/carBrandRent" />
+
+        <Button
+            android:id="@+id/buttonRent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
+            android:onClick="buttonRentClick"
+            android:text="Rent car"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

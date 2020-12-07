@@ -20,10 +20,15 @@ public class UserViewModel extends AndroidViewModel {
         userRepository = new UserRepository(application);
     }
 
-    public LiveData<User> getUserById(int id){
+    public User getUser(int id) {
+        return userRepository.getUser(id);
+    }
+
+    public LiveData<User> getUserById(int id) {
         return userRepository.getUserById(id);
     }
-    public User getUserByEmail(String email){
+
+    public User getUserByEmail(String email) {
         return userRepository.getUserByEmail(email);
     }
 
@@ -37,5 +42,9 @@ public class UserViewModel extends AndroidViewModel {
 
     public void deleteUser(User user) {
         userRepository.deleteUser(user);
+    }
+
+    public void updateUser(User user) {
+        userRepository.updUser(user);
     }
 }

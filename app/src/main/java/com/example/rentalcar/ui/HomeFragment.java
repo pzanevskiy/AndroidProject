@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
                 int userId=Integer.parseInt(mParam1);
                 textView.setText(user.getName());
                 email.setText(user.getEmail());
-                money.setText(String.valueOf(user.getMoney()));
+                money.setText(String.format("%.2f",user.getMoney())+'$');
             }
         });
 

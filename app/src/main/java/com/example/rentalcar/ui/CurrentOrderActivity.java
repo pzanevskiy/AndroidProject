@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.rentalcar.R;
 import com.example.rentalcar.db.entity.Car;
+import com.example.rentalcar.db.entity.Invoice;
 import com.example.rentalcar.db.entity.Order;
+import com.example.rentalcar.service.DateService;
+import com.example.rentalcar.viewmodel.InvoiceViewModel;
 import com.example.rentalcar.viewmodel.OrderViewModel;
 
 public class CurrentOrderActivity extends AppCompatActivity {
@@ -21,7 +24,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
     Car car;
     Order order;
     OrderViewModel orderViewModel;
-
+    InvoiceViewModel invoiceViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
         Button button=(Button)findViewById(R.id.buttonComplete);
         button.setOnClickListener(onClickListener);
         orderViewModel=new ViewModelProvider(this).get(OrderViewModel.class);
+        invoiceViewModel=new ViewModelProvider(this).get(InvoiceViewModel.class);
         args=getIntent().getExtras();
         if(args!=null){
             order=(Order)args.getSerializable("order");
@@ -56,6 +60,16 @@ public class CurrentOrderActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             order.setStatus("completed");
+            int difference= DateService.getDaysDifference(order.getEndDate());
+            if(difference>0){
+                Invoice invoice=new Invoice();
+                invoice.setOrderId(order.getId());
+                invoice.setUserId(userId);
+                invoice.setPrice(difference*order.getCar().getPrice());
+                invoice.setMessage("Lease debt");
+                invoice.setStatus("not_paid");
+                invoiceViewModel.addInvoice(invoice);
+            }
             orderViewModel.updateOrder(order);
             Intent intent=new Intent(CurrentOrderActivity.this, NavBarActivity.class);
             intent.putExtra("user",userId);
