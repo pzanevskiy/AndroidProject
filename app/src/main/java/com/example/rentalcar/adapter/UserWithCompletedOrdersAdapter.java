@@ -44,18 +44,17 @@ public class UserWithCompletedOrdersAdapter extends BaseAdapter {
         if (view == null) {
             view = lInflater.inflate(R.layout.fragment_compl_order, parent, false);
         }
-
-        TextView carId=(TextView)view.findViewById(R.id.orderCarId);
-        TextView userId=(TextView)view.findViewById(R.id.orderUserId);
-        TextView duration=(TextView)view.findViewById(R.id.orderDuration);
-        TextView start=(TextView)view.findViewById(R.id.orderStart);
-        TextView end=(TextView)view.findViewById(R.id.orderEnd);
+        TextView orderId=(TextView)view.findViewById(R.id.complOrderId);
+        TextView curOrderCarB=(TextView)view.findViewById(R.id.complOrderCarBrand);
+        TextView curOrderCarM=(TextView)view.findViewById(R.id.complOrderCarModel);
+        TextView start=(TextView)view.findViewById(R.id.complOrderStart);
+        TextView end=(TextView)view.findViewById(R.id.complOrderEnd);
 
         Order order= orders.get(position);
 
-        carId.setText(String.valueOf(order.getCar().getId()));
-        userId.setText(String.valueOf(order.getUserId()));
-        duration.setText(String.valueOf(order.getDuration()));
+        orderId.setText(String.valueOf(order.getId()));
+        curOrderCarB.setText(order.getCar().getBrand());
+        curOrderCarM.setText(order.getCar().getModel());
         start.setText(order.getStartDate());
         end.setText(order.getEndDate());
 

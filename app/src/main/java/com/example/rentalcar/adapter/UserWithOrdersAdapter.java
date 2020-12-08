@@ -50,16 +50,16 @@ public class UserWithOrdersAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.order_item, parent, false);
         }
 
-        TextView carId=(TextView)view.findViewById(R.id.orderCarId);
-        TextView userId=(TextView)view.findViewById(R.id.orderUserId);
-        TextView duration=(TextView)view.findViewById(R.id.orderDuration);
+        TextView orderId=(TextView)view.findViewById(R.id.curOrderId);
+        TextView complCarM=(TextView)view.findViewById(R.id.curOrderCarModel);
+        TextView complCarB=(TextView)view.findViewById(R.id.curOrderCarBrand);
         TextView start=(TextView)view.findViewById(R.id.orderStart);
         TextView end=(TextView)view.findViewById(R.id.orderEnd);
 
         Order order= orders.get(position);
-        carId.setText(String.valueOf(order.getCar().getId()));
-        userId.setText(String.valueOf(order.getUserId()));
-        duration.setText(String.valueOf(order.getDuration()));
+        orderId.setText(String.valueOf(order.getId()));
+        complCarM.setText(order.getCar().getModel());
+        complCarB.setText(order.getCar().getBrand());
         start.setText(order.getStartDate());
         end.setText(order.getEndDate());
 
