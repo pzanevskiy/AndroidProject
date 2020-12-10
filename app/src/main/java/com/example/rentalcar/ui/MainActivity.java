@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         userViewModel= new ViewModelProvider(this).get(UserViewModel.class);
         carViewModel=new ViewModelProvider(this).get(CarViewModel.class);
 //        Car car=new Car();
-//        car.setBrand("BMW");
-//        car.setModel("i30");
+//        car.setBrand("newCar");
+//        car.setModel("iModel");
 //        car.setPrice(99.9);
 //        for(int i=0;i<10;i++){
 //            carViewModel.addCar(car);
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i("ex", "error");
         }
         System.out.println();
-        Intent intent=new Intent(MainActivity.this, NavBarActivity.class);
-        intent.putExtra("user",user.getId());
-        startActivity(intent);
+            Intent intent=new Intent(MainActivity.this, NavBarActivity.class);
+            intent.putExtra("user",user.getId());
+            startActivity(intent);
     }
 
     public void create(View view) {

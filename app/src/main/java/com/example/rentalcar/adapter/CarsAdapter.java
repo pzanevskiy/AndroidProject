@@ -54,7 +54,7 @@ public class CarsAdapter extends BaseAdapter {
 
         brand.setText(car.getBrand());
         model.setText(car.getModel());
-        price.setText(String.valueOf(car.getPrice())+'$');
+        price.setText(String.format("%.2f",car.getPrice())+'$');
 
         return view;
     }

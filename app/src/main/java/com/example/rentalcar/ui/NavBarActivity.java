@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.rentalcar.R;
@@ -25,6 +29,7 @@ public class NavBarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_bar);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         userViewModel=new ViewModelProvider(this).get(UserViewModel.class);
@@ -42,6 +47,29 @@ public class NavBarActivity extends AppCompatActivity {
         openFragment(HomeFragment.newInstance(userId/*, user.getName(),user.getEmail(),String.valueOf(user.getMoney())*/));
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.aboutMenu:{
+                Intent intent=new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.exitMenu:{
+                Intent intent=new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void openFragment(Fragment fragment) {

@@ -7,7 +7,10 @@
     <string name="completed">Completed</string>
     <string name="penalties">Penalties</string>
     <string name="home">Home</string>
-
+    <string name="zanevskij_pavel">Zanevskij Pavel</string>
+    <string name="age">Age: 19</string>
+    <string name="edu">Student of GrSU</string>
+    <string name="course_spec">Course: 3, Speciality: information technology software</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="homefragment">HomeFragment</string>
@@ -22,4 +25,6 @@
     <string name="brand">Brand</string>
     <string name="model">Model</string>
     <string name="price">Price</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
 </resources>
